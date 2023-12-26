@@ -33,7 +33,7 @@ end
   def update
     prototype = Prototype.find(params[:id])
     prototype.update(prototype_params)
-    redirect_to root_path
+    redirect_to prototype_path
   end
 
   def destroy
@@ -54,7 +54,7 @@ end
     end
   
     def move_to_index
-      unless user_signed_in? 
+      unless user_signed_in? == current_user = @prototype.user
         redirect_to action: :index
       end
 
